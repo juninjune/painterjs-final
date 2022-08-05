@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Painter</title>
+  </head>
+  <body>
+    <div class="mother">
+      <div class="top-bar">
+        <h1>PAINT!</h1>
+        <div class="save-btn btn">save</div>
+      </div>
+      <div class="palette">
+        <div class="palette__color-palette">
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <div class="palette__color-chip btn"></div>
+          <input type="color" class="palette__color-chip btn"></input>
+        </div>
+        <input type="range" class="palette__stroke-width" />
+        <div class="palette__stroke-fill-toggle">
+            <div class="palette__stroke btn">st</div>
+            <div class="palette__fill btn">fi</div>
+        </div>
+        <div class="palette__reset">erase</div>
+      </div>
+      <div class="bottom-bar">
+        <div class="bottom-bar__text-palette"></div>
+        <div class="bottom-bar__custom-text"></div>
+      </div>
+    </div>
+    <canvas id="myCanvas"></canvas>
+    <script src="js/tools.js"></script>
+    <script src="js/preset.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
