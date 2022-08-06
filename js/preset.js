@@ -26,7 +26,6 @@ const SELECT_COLORS = [
   "#da8979",
   "#ec240d",
   "#3f2322",
-  "#FAF3EB",
 ];
 
 backgroundCanvas.style.backgroundColor = BACKGROUND_COLOR;

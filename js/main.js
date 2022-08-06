@@ -55,18 +55,22 @@ lineWidth.addEventListener("change", changeWidth);
 
 fillMode.addEventListener("click", () => {
   isFill = true;
+  fillMode.classList.add("selected-mode");
+  strokeMode.classList.remove("selected-mode");
 });
 strokeMode.addEventListener("click", () => {
   isFill = false;
+  strokeMode.classList.add("selected-mode");
+  fillMode.classList.remove("selected-mode");
 });
 
 trash.addEventListener("click", reset);
 
 function reset() {
-  ctx.save();
-  ctx.fillStyle = "#FAF3EB";
-  fill();
-  ctx.restore();
+  //  ctx.save();
+  //  ctx.fillStyle = "#FAF3EB";
+  //  fill();
+  //  ctx.restore();
   lines.addForce(80);
 }
 
