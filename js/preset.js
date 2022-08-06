@@ -3,6 +3,7 @@ const backgroundCtx = backgroundCanvas.getContext("2d");
 
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
+ctx.lineCap = "round";
 
 const BACKGROUND_CANVAS_WIDTH = 775;
 const BACKGROUND_CANVAS_HEIGHT = 590;
