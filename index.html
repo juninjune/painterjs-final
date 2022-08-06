@@ -12,7 +12,7 @@
     <div class="mother">
       <div class="top-bar">
         <h1>PAINT!</h1>
-        <div class="save-btn btn">!!!!!!!!!!!!!!!!!!SAVE!!!!!!!!!!!!!!!!!</div>
+        <div id="save" class="save-btn btn">!!!!!!!!!!!!!!!!!!SAVE!!!!!!!!!!!!!!!!!</div>
       </div>
       <div class="palette">
         <div class="palette__color-palette">
@@ -39,22 +39,25 @@
       <div class="bottom-bar">
         <div class="bottom-bar__text">   
           <div class="bottom-bar__text-palette">
-            <div class="bottom-bar__text-chip btn">1</div>
-            <div class="bottom-bar__text-chip btn">2</div>
-            <div class="bottom-bar__text-chip btn">3</div>
-            <div class="bottom-bar__text-chip btn">4</div>
-            <div class="bottom-bar__text-chip btn">5</div>
+            <div class="bottom-bar__text-chip btn" data-text="🥰">🥰</div>
+            <div class="bottom-bar__text-chip btn" data-text="🫠">🫠</div>
+            <div class="bottom-bar__text-chip btn" data-text="🦍">🦍</div>
+            <div class="bottom-bar__text-chip btn" data-text="🥨">🥨</div>
+            <div class="bottom-bar__text-chip btn" data-text="⛲">⛲</div>
           </div>
           <div class="bottom-bar__custom-text">
-            <input class="bottom-bar__custom-text-input" placeholder="WRITE!" type="text">
-            <select name="font-size-select" class="bottom-bar__font-size" id="font-size">
-              <option value="5">SMALL...!</option>
-              <option value="5">MEDIUM!</option>
-              <option value="5">LAAARRRGE!!!</option>
+            <input id="custom-text" class="bottom-bar__custom-text-input" placeholder="WRITE!" type="text">
+            <select name="font-size-select" id="font-size" class="bottom-bar__font-size" id="font-size">
+              <option value="20px">SMALL...!</option>
+              <option value="40px">MEDIUM!</option>
+              <option value="300px">LAAARRRGE!!!</option>
             </select>
           </div>
         </div>
-        <div class="bottom-bar__import-img btn">PICTURE!</div>
+        <div>
+          <label for="img-file" class="bottom-bar__import-img btn">IMAGE!!</label>
+          <input type="file" id="img-file" accept="image/*"></input >
+        </div>
       </div>
     </div>
     <canvas id="drawingCanvas"></canvas>

@@ -1,4 +1,6 @@
 const resetButton = document.getElementById("reset");
+const backgroundImg = new Image();
+backgroundImg.src = "../img/background.png";
 
 function setPaintColor(color) {
   ctx.fillStyle = color;
@@ -37,6 +39,7 @@ function clear() {
     CANVAS_HEIGHT
   );
   ctx.restore();
+  ctx.clearRect(0, 0, BACKGROUND_CANVAS_WIDTH, BACKGROUND_CANVAS_HEIGHT);
 }
 
 function fill() {

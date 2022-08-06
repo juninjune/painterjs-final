@@ -26,14 +26,16 @@ class Lines {
     if (isDrawing) {
       return;
     }
-    clear();
     for (let i = 0; i < this.lines.length; i++) {
       this.lines[i].update();
     }
   }
 
-  reset() {
-    this.lines = [];
+  reset(f) {
+    this.addForce(f);
+    setTimeout(() => {
+      this.lines = [];
+    }, 3000);
   }
 }
 

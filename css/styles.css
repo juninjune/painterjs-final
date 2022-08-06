@@ -248,19 +248,21 @@
   font-weight: 600;
 }
 
+#img-file {
+  width: 0;
+  height: 0;
+}
+
 .bottom-bar__import-img {
-  background-color: #ffece5;
-  margin-right: 5px;
-  width: 74px;
+  margin-right: 4px;
+  width: 75px;
   height: 40px;
+  background-color: #5283dc;
   border-radius: 13px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  font-size: 13px;
-  font-weight: 600;
+  justify-content: center;
 }
 
 .selected-chip {

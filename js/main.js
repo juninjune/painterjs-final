@@ -1,3 +1,10 @@
+const save = document.getElementById("save");
+const textChips = Array.from(
+  document.getElementsByClassName("bottom-bar__text-chip")
+);
+const font = document.getElementById("font-size");
+const text = document.getElementById("custom-text");
+const file = document.getElementById("img-file");
 const trash = document.getElementById("reset");
 const strokeMode = document.getElementById("stroke-mode");
 const fillMode = document.getElementById("fill-mode");
@@ -8,6 +15,7 @@ const lines = new Lines();
 let isFill = false;
 let isDrawing = false;
 let line;
+let fontSize = "20px";
 
 function mouseMove(e) {
   if (isInCanvas(e)) {
@@ -64,14 +72,64 @@ strokeMode.addEventListener("click", () => {
   fillMode.classList.remove("selected-mode");
 });
 
-trash.addEventListener("click", reset);
+trash.addEventListener("click", onTrash);
+file.addEventListener("change", fileChange);
+canvas.addEventListener("dblclick", textInput);
+font.addEventListener("change", onFontSizeChange);
+for (let i = 0; i < textChips.length; i++) {
+  textChips[i].addEventListener("click", onTextChipSelected);
+}
+save.addEventListener("click", onSaveClicked);
 
-function reset() {
-  //  ctx.save();
-  //  ctx.fillStyle = "#FAF3EB";
-  //  fill();
-  //  ctx.restore();
-  lines.addForce(80);
+function onTrash() {
+  lineReset();
+  setTimeout(() => {
+    clear();
+  }, 3000);
+}
+
+function lineReset() {
+  lines.reset(80);
+}
+
+function fileChange(e) {
+  const file = e.target.files[0];
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.src = url;
+  img.onload = function () {
+    ctx.drawImage(
+      img,
+      CANVAS_LEFT_MARGIN,
+      CANVAS_TOP_MARGIN,
+      CANVAS_WIDTH,
+      CANVAS_HEIGHT
+    );
+  };
+}
+
+function textInput(e) {
+  ctx.save();
+  ctx.font = fontSize + " serif";
+  ctx.fillText(text.value, e.offsetX, e.offsetY);
+  ctx.restore();
+}
+
+function onFontSizeChange(e) {
+  console.log(e);
+  fontSize = e.target.value;
+}
+
+function onTextChipSelected(e) {
+  text.value = e.target.dataset.text;
+}
+
+function onSaveClicked() {
+  const url = canvas.toDataURL();
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "PAIN!T!.png";
+  a.click();
 }
 
 function update() {
