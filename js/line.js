@@ -31,6 +31,10 @@ class Lines {
       this.lines[i].update();
     }
   }
+
+  reset() {
+    this.lines = [];
+  }
 }
 
 class Line {

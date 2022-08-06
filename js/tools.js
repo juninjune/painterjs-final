@@ -39,6 +39,16 @@ function clear() {
   ctx.restore();
 }
 
+function fill() {
+  CANVAS_COLOR = ctx.fillStyle;
+  ctx.fillRect(
+    CANVAS_LEFT_MARGIN,
+    CANVAS_TOP_MARGIN,
+    CANVAS_WIDTH,
+    CANVAS_HEIGHT
+  );
+}
+
 class Vector2 {
   constructor(x = 0, y = 0) {
     this.x = x;

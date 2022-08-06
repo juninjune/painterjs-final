@@ -1,9 +1,11 @@
 const trash = document.getElementById("reset");
+const strokeMode = document.getElementById("stroke-mode");
+const fillMode = document.getElementById("fill-mode");
 
 const lineWidth = document.querySelector("#stroke-width");
 const lines = new Lines();
 
-let isPaint = false;
+let isFill = false;
 let isDrawing = false;
 let line;
 
@@ -24,7 +26,8 @@ function mouseMove(e) {
 
 function mouseDown(e) {
   if (isInCanvas(e)) {
-    if (isPaint) {
+    if (isFill) {
+      fill();
     } else {
       line = new Line(e, ctx.lineWidth, ctx.strokeStyle);
       isDrawing = true;
@@ -49,9 +52,21 @@ canvas.addEventListener("mousedown", mouseDown);
 canvas.addEventListener("mouseup", mouseUp);
 
 lineWidth.addEventListener("change", changeWidth);
+
+fillMode.addEventListener("click", () => {
+  isFill = true;
+});
+strokeMode.addEventListener("click", () => {
+  isFill = false;
+});
+
 trash.addEventListener("click", reset);
 
 function reset() {
+  ctx.save();
+  ctx.fillStyle = "#FAF3EB";
+  fill();
+  ctx.restore();
   lines.addForce(80);
 }
 

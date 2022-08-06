@@ -13,7 +13,7 @@ const CANVAS_WIDTH = 600;
 const CANVAS_HEIGHT = 400;
 
 const BACKGROUND_COLOR = "#FBAC9B";
-const CANVAS_COLOR = "#FAF3EB";
+let CANVAS_COLOR = "#FAF3EB";
 
 const SELECT_COLORS = [
   "#fa5d1e",
