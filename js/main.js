@@ -1,6 +1,9 @@
+const trash = document.getElementById("reset");
+
 const lineWidth = document.querySelector("#stroke-width");
 const lines = new Lines();
 
+let isPaint = false;
 let isDrawing = false;
 let line;
 
@@ -12,21 +15,29 @@ function mouseMove(e) {
     }
   } else {
     canvas.style.pointerEvents = "none";
-    isDrawing = false;
+    if (isDrawing) {
+      isDrawing = false;
+      line.endStroke();
+    }
   }
 }
 
 function mouseDown(e) {
   if (isInCanvas(e)) {
-    line = new Line(e, ctx.lineWidth, ctx.strokeStyle);
-    isDrawing = true;
-    line.startStroke(e);
+    if (isPaint) {
+    } else {
+      line = new Line(e, ctx.lineWidth, ctx.strokeStyle);
+      isDrawing = true;
+      line.startStroke(e);
+    }
   }
 }
 
 function mouseUp() {
-  isDrawing = false;
-  line.endStroke();
+  if (isDrawing) {
+    isDrawing = false;
+    line.endStroke();
+  }
 }
 
 function changeWidth(e) {
@@ -38,5 +49,15 @@ canvas.addEventListener("mousedown", mouseDown);
 canvas.addEventListener("mouseup", mouseUp);
 
 lineWidth.addEventListener("change", changeWidth);
+trash.addEventListener("click", reset);
 
-setInterval(lines.drawLines, 3000);
+function reset() {
+  lines.addForce(80);
+}
+
+function update() {
+  lines.update();
+  lines.drawLines();
+}
+
+setInterval(update, 30);

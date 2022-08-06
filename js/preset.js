@@ -4,6 +4,9 @@ const backgroundCtx = backgroundCanvas.getContext("2d");
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
 
+const BACKGROUND_CANVAS_WIDTH = 775;
+const BACKGROUND_CANVAS_HEIGHT = 590;
+
 const CANVAS_TOP_MARGIN = 100;
 const CANVAS_LEFT_MARGIN = 50;
 const CANVAS_WIDTH = 600;
@@ -29,10 +32,10 @@ const SELECT_COLORS = [
 backgroundCanvas.style.backgroundColor = BACKGROUND_COLOR;
 
 function resize() {
-  backgroundCanvas.width = 775;
-  backgroundCanvas.height = 590;
-  canvas.width = 775;
-  canvas.height = 590;
+  backgroundCanvas.width = BACKGROUND_CANVAS_WIDTH;
+  backgroundCanvas.height = BACKGROUND_CANVAS_HEIGHT;
+  canvas.width = BACKGROUND_CANVAS_WIDTH;
+  canvas.height = BACKGROUND_CANVAS_HEIGHT;
 }
 
 resize();

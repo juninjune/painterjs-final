@@ -4,15 +4,32 @@ class Lines {
   }
 
   drawLines = () => {
-    if (!isDrawing) {
-      for (let i = 0; i < this.lines.length; i++) {
-        this.lines[i].draw();
-      }
+    if (isDrawing) {
+      return;
+    }
+    for (let i = 0; i < this.lines.length; i++) {
+      this.lines[i].draw();
     }
   };
 
   addLine(line) {
     this.lines.push(line);
+  }
+
+  addForce(f) {
+    for (let i = 0; i < this.lines.length; i++) {
+      this.lines[i].addForce(f);
+    }
+  }
+
+  update() {
+    if (isDrawing) {
+      return;
+    }
+    clear();
+    for (let i = 0; i < this.lines.length; i++) {
+      this.lines[i].update();
+    }
   }
 }
 
@@ -22,9 +39,12 @@ class Line {
     this.lineWidth = lineWidth;
     this.color = color;
 
+    this.translate = new Vector2();
     this.accelerate = new Vector2();
     this.velocity = new Vector2();
     this.location = new Vector2(e.offsetX, e.offsetY);
+
+    this.isActive = true;
   }
 
   addPath(e) {
@@ -48,28 +68,52 @@ class Line {
   }
 
   draw() {
+    if (!this.isActive) {
+      return;
+    }
     ctx.save();
     ctx.strokeStyle = this.color;
     ctx.lineWidth = this.lineWidth;
     ctx.beginPath();
-    ctx.moveTo(this.location.x, this.location.y);
+    ctx.moveTo(
+      this.location.x + this.translate.x,
+      this.location.y + this.translate.y
+    );
     for (let i = 0; i < this.path.length; i++) {
-      ctx.lineTo(this.path[i].x, this.path[i].y);
+      ctx.lineTo(
+        this.path[i].x + this.translate.x,
+        this.path[i].y + this.translate.y
+      );
     }
     ctx.stroke();
     ctx.restore();
   }
 
-  addForce(x, y) {
-    this.accelerate.x += x;
-    this.accelerate.y += y;
+  addForce(f) {
+    if (!this.isActive) {
+      return;
+    }
+    this.accelerate.x += Math.random() * f - f / 2;
+    this.accelerate.y += Math.random() * f - f / 2;
   }
 
   update() {
+    if (!this.isActive) {
+      return;
+    }
     this.velocity.x += this.accelerate.x;
     this.velocity.y += this.accelerate.y;
 
-    this.location.x += this.velocity.x;
-    this.location.y += this.velocity.y;
+    this.translate.x += this.velocity.x;
+    this.translate.y += this.velocity.y;
+
+    this.accelerate = new Vector2();
+
+    if (
+      Math.abs(this.translate.x) > BACKGROUND_CANVAS_WIDTH ||
+      Math.abs(this.translate.y) > BACKGROUND_CANVAS_HEIGHT
+    ) {
+      this.isActive = false;
+    }
   }
 }
