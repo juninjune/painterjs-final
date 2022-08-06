@@ -8,41 +8,58 @@
     <title>Painter</title>
   </head>
   <body>
+    <canvas id="myCanvas"></canvas>
     <div class="mother">
       <div class="top-bar">
         <h1>PAINT!</h1>
-        <div class="save-btn btn">save</div>
+        <div class="save-btn btn">!!!!!!!!!!!!!!!!!!SAVE!!!!!!!!!!!!!!!!!</div>
       </div>
       <div class="palette">
         <div class="palette__color-palette">
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <div class="palette__color-chip btn"></div>
-          <input type="color" class="palette__color-chip btn"></input>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color=""></div>
+          <div class="palette__color-chip btn" data-color="">E</div>
+          <input type="color" id="color" class="palette__color-chip btn"></input>
         </div>
-        <input type="range" class="palette__stroke-width" />
+        <input type="range" id="stroke-width" class="palette__stroke-width" min="1" max="10" value="2" />
         <div class="palette__stroke-fill-toggle">
             <div class="palette__stroke btn">st</div>
             <div class="palette__fill btn">fi</div>
         </div>
-        <div class="palette__reset">erase</div>
+        <div class="palette__reset btn">BURN!!!</div>
       </div>
       <div class="bottom-bar">
-        <div class="bottom-bar__text-palette"></div>
-        <div class="bottom-bar__custom-text"></div>
+        <div class="bottom-bar__text">   
+          <div class="bottom-bar__text-palette">
+            <div class="bottom-bar__text-chip btn">1</div>
+            <div class="bottom-bar__text-chip btn">2</div>
+            <div class="bottom-bar__text-chip btn">3</div>
+            <div class="bottom-bar__text-chip btn">4</div>
+            <div class="bottom-bar__text-chip btn">5</div>
+          </div>
+          <div class="bottom-bar__custom-text">
+            <input class="bottom-bar__custom-text-input" placeholder="WRITE!" type="text">
+            <select name="font-size-select" class="bottom-bar__font-size" id="font-size">
+              <option value="5">SMALL...!</option>
+              <option value="5">MEDIUM!</option>
+              <option value="5">LAAARRRGE!!!</option>
+            </select>
+          </div>
+        </div>
+        <div class="bottom-bar__import-img btn">PICTURE!</div>
       </div>
     </div>
-    <canvas id="myCanvas"></canvas>
-    <script src="js/tools.js"></script>
+    <canvas id="drawingCanvas"></canvas>
     <script src="js/preset.js"></script>
+    <script src="js/tools.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
